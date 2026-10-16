@@ -37,8 +37,9 @@ main() {
     return 0
   fi
 
-  mkdir -p "$install_dir" 2>/dev/null && [ -w "$install_dir" ] \
-    || die "cannot write to $install_dir (set MINUTE_INSTALL_DIR to a directory you own)"
+  if ! mkdir -p "$install_dir" 2>/dev/null || [ ! -w "$install_dir" ]; then
+    die "cannot write to $install_dir (set MINUTE_INSTALL_DIR to a directory you own)"
+  fi
 
   TMP_DIR="$(mktemp -d)"
   local tmp="$TMP_DIR"
