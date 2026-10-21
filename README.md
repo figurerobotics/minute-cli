@@ -10,6 +10,8 @@ curl -fsSL https://raw.githubusercontent.com/figurerobotics/minute-cli/HEAD/inst
 
 The script picks the archive for your machine (macOS and Linux, Apple Silicon and Intel), checks its SHA-256 against the release's `checksums.txt`, and puts `minute` in `~/.local/bin`. It never asks for sudo. Run the same command again to upgrade.
 
+Once a day, a command run at a terminal checks this repository for a newer release and, when there is one, says so after its output, with the command above to run. The check is skipped when output is piped, in CI, and when `MINUTE_NO_UPDATE_NOTIFIER` is set.
+
 | Variable | Effect |
 | --- | --- |
 | `MINUTE_INSTALL_DIR` | Install somewhere else, e.g. `curl -fsSL … \| MINUTE_INSTALL_DIR=/usr/local/bin bash` |
